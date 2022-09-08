@@ -27,9 +27,9 @@ export function Home() {
         <p>save more with coupons & upto 70% off!</p>
         <button className="btw__shop">Shop</button>
       </div>
-      {/* <div>
+      <div>
         <img src="https://swall.teahub.io/photos/small/356-3567567_paradise-valley-arizona-luxury-homes.jpg" />
-      </div> */}
+      </div>
     </div>
   );
 }
