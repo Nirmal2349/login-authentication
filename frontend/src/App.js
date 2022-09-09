@@ -22,9 +22,4 @@ export default function APP() {
   );
 }
 
-// function Logout(){
 
-//   return(
-
-//   )
-// }

@@ -46,9 +46,9 @@ export function Signup() {
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
       age: data.get("age"),
-      gender: data.get("gender"),
+      gender: gender,
       emailAddress: data.get("email"),
-      date: data.get("date"),
+      date: value,
       phoneNumber: data.get("phoneNumber"),
       password: data.get("password"),
     };
@@ -76,13 +76,11 @@ export function Signup() {
     setGender(event.target.value);
   };
 
-    const [value, setValue] = React.useState(dayjs("1997-01-29T21:11:54"));
+  const [value, setValue] = React.useState(dayjs("1997-01-29T21:11:54"));
 
-    const handleChanged = (newValue) => {
-      setValue(newValue);
-    };
-
-
+  const handleChanged = (newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -155,9 +153,9 @@ export function Signup() {
                       label="gender"
                       onChange={handleChange}
                     >
-                      <MenuItem value={10}>Male</MenuItem>
-                      <MenuItem value={20}>Female</MenuItem>
-                      <MenuItem value={30}>LGBT</MenuItem>
+                      <MenuItem value={"Male"}>Male</MenuItem>
+                      <MenuItem value={'Female'}>Female</MenuItem>
+                      <MenuItem value={'Other'}>Other</MenuItem>
                     </Select>
                   </FormControl>
                 </Box>

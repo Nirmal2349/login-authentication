@@ -76,8 +76,7 @@ app.post("/api/login", async (req, res) => {
 
 app.get("/api/profile", authenticateUser, async (req, res) => {
   console.log(req.userId);
-  const user = await User.findById(req.userId)
-                                   
+  const user = await User.findById(req.userId)                                
   res.json({ ok: true, msg: JSON.stringify(user)});
 });
 
