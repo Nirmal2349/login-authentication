@@ -11,7 +11,15 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import dayjs from "dayjs";
+import Stack from "@mui/material/Stack";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 const theme = createTheme();
 
 export function Signup() {
@@ -37,7 +45,11 @@ export function Signup() {
     const body = {
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
+      age: data.get("age"),
+      gender: data.get("gender"),
       emailAddress: data.get("email"),
+      date: data.get("date"),
+      phoneNumber: data.get("PhoneNumber"),
       password: data.get("password"),
     };
 
@@ -58,6 +70,19 @@ export function Signup() {
       toast.error("Email Address already registered");
     }
   };
+  const [gender, setGender] = React.useState("");
+
+  const handleChange = (event) => {
+    setGender(event.target.value);
+  };
+
+    const [value, setValue] = React.useState(dayjs("1997-01-29T21:11:54"));
+
+    const handleChanged = (newValue) => {
+      setValue(newValue);
+    };
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -105,6 +130,38 @@ export function Signup() {
                   autoComplete="family-name"
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="age"
+                  name="age"
+                  required
+                  fullWidth
+                  id="age"
+                  label="age"
+                  type="number"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ minWidth: 120 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      Gender
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={gender}
+                      label="gender"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={10}>Male</MenuItem>
+                      <MenuItem value={20}>Female</MenuItem>
+                      <MenuItem value={30}>LGBT</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -113,6 +170,31 @@ export function Signup() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <Stack spacing={3}>
+                    <DesktopDatePicker
+                    id="date"
+                      label="Date desktop"
+                      inputFormat="MM/DD/YYYY"
+                      value={value}
+                      onChange={handleChanged}
+                      renderInput={(params) => <TextField {...params} />}
+                    />{" "}
+                  </Stack>
+                </LocalizationProvider>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="phoneNumber"
+                  label="Phonenumber"
+                  type="phoneNumber"
+                  id="phoneNumber"
+                  autoComplete="new-phoneNumber"
                 />
               </Grid>
               <Grid item xs={12}>

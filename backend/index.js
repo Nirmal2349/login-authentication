@@ -34,6 +34,10 @@ app.post("/api/signup", async (req, res) => {
       password: body.password,
       firstName: body.firstName,
       lastName: body.lastName,
+      age: body.age,
+      date: body.date,
+      gender: body.gender,
+      phoneNumber: body.phoneNumber,
     });
     console.log(newUser);
     res.status(200).json({ success: true, msg: "account created sucessfull" });
@@ -70,14 +74,11 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-
-
 app.get("/api/profile", authenticateUser, async (req, res) => {
   console.log(req.userId);
   console.log(await User.findById(req.userId));
   res.json({ ok: true, msg: "profile page" });
 });
-
 
 app.get("/api/logout", (req, res) => {
   console.log(req);
