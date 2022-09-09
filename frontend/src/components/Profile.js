@@ -1,7 +1,20 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 
-export function Home() {
+export function Profile() {
+  // const [isLoggedin, setIsLoggedin] = useState(false);
+
+  //   const logout = () => {
+  //     localStorage.removeItem("jwtToken");
+  //     setIsLoggedin(false);
+  //   };
+
+  const signoutHandler = () => {
+    localStorage.removeItem("jwtToken");
+    window.location.href = "/login";
+  };
+
   const navigate = useNavigate();
   useEffect(() => {
     let isAuthenticated = false;
@@ -28,7 +41,8 @@ export function Home() {
         <button className="btw__shop">Shop</button>
       </div>
       <div>
-        <img src="https://swall.teahub.io/photos/small/356-3567567_paradise-valley-arizona-luxury-homes.jpg" />
+        <h1>User is loggedin</h1>
+        <button onClick={signoutHandler}>logout user</button>
       </div>
     </div>
   );

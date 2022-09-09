@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -27,7 +27,7 @@ export function Signup() {
     // Redirecting to the home page if the token exists
     
     if (token) {
-      return navigate("/");
+      return navigate("/profile");
     }
   }, [token, navigate]);
   const handleSubmit = async (event) => {
@@ -46,7 +46,8 @@ export function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body), // body data type must match "Content-Type" header
+      body: JSON.stringify(body), 
+      // body data type must match "Content-Type" header
     });
     const jsonResponse = await response.json();
     if (jsonResponse && jsonResponse.success) {

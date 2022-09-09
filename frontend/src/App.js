@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "./components/home";
+import { Profile } from "./components/Profile";
 import { Login } from "./components/login";
 import { Signup } from "./components/signup";
 
@@ -10,7 +10,7 @@ export default function APP() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

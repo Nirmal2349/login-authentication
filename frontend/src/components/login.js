@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,7 +25,7 @@ export function Login() {
       setToken(false);
     }
     if (token) {
-      return navigate("/");
+      return navigate("/profile");
     }
   }, [token, navigate]);
 
@@ -126,10 +126,10 @@ export function Login() {
                   id="password"
                   autoComplete="current-password"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
-                />
+                /> */}
                 <Button
                   type="submit"
                   fullWidth
@@ -139,9 +139,9 @@ export function Login() {
                   Sign In
                 </Button>
                 <Grid container>
-                  <Grid item xs>
+                  {/* <Grid item xs>
                     <NavLink to="/forgetpassword">Forgot password?</NavLink>
-                  </Grid>
+                  </Grid> */}
                   <Grid item>
                     <NavLink to="/signup">
                       Don't have an account? Sign Up
