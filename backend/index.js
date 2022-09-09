@@ -76,8 +76,9 @@ app.post("/api/login", async (req, res) => {
 
 app.get("/api/profile", authenticateUser, async (req, res) => {
   console.log(req.userId);
-  console.log(await User.findById(req.userId));
-  res.json({ ok: true, msg: "profile page" });
+  const user = await User.findById(req.userId)
+                                   
+  res.json({ ok: true, msg: JSON.stringify(user)});
 });
 
 app.get("/api/logout", (req, res) => {

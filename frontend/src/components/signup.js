@@ -49,7 +49,7 @@ export function Signup() {
       gender: data.get("gender"),
       emailAddress: data.get("email"),
       date: data.get("date"),
-      phoneNumber: data.get("PhoneNumber"),
+      phoneNumber: data.get("phoneNumber"),
       password: data.get("password"),
     };
 
@@ -150,7 +150,7 @@ export function Signup() {
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
-                      id="demo-simple-select"
+                      id="gender"
                       value={gender}
                       label="gender"
                       onChange={handleChange}
@@ -176,7 +176,7 @@ export function Signup() {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <Stack spacing={3}>
                     <DesktopDatePicker
-                    id="date"
+                      id="date"
                       label="Date desktop"
                       inputFormat="MM/DD/YYYY"
                       value={value}
