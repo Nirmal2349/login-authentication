@@ -10,8 +10,8 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please Enter Password"],
   },
   phoneNumber: String,
-  firstname: String,
-  lastname: String,
+  firstName: String,
+  lastName: String,
 });
 
 module.exports = mongoose.model("User", UserSchema);

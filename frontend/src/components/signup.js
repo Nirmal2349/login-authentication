@@ -11,6 +11,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
 
+
 const theme = createTheme();
 
 export function Signup() {
@@ -25,7 +26,7 @@ export function Signup() {
       setToken(false);
     }
     // Redirecting to the home page if the token exists
-    
+
     if (token) {
       return navigate("/profile");
     }
@@ -46,7 +47,7 @@ export function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body), 
+      body: JSON.stringify(body),
       // body data type must match "Content-Type" header
     });
     const jsonResponse = await response.json();
