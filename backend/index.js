@@ -48,8 +48,8 @@ app.post("/api/signup", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const body = req.body;
   const checkUser = await User.findOne({ emailAddress: body.emailAddress });
-  console.log(checkUser);
-  console.log(req.body);
+  // console.log(checkUser);
+  // console.log(req.body);
   if (checkUser) {
     if (checkUser.password == body.password) {
       const token = jwt.sign(
