@@ -10,12 +10,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 
 const theme = createTheme();
 
 export function Login() {
-  
   const [token, setToken] = React.useState("");
   const navigate = useNavigate();
   React.useEffect(() => {
@@ -25,9 +24,7 @@ export function Login() {
       setToken(false);
     }
     if (token) {
-
       return navigate("/profile");
-
     }
   }, [token, navigate]);
 
@@ -35,7 +32,7 @@ export function Login() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = {
-      email: data.get("email"),
+      emailAddress: data.get("email"),
       password: data.get("password"),
     };
     const response = await fetch("/api/login", {
@@ -48,12 +45,15 @@ export function Login() {
     });
     const jsonResponse = await response.json();
     if (jsonResponse && jsonResponse.success) {
+      toast.success("login sucessfull");
       // Storing token on local storage
       localStorage.setItem("jwtToken", jsonResponse.token);
       setToken(jsonResponse.token);
 
       // Deleting token from local stroage
       // localStorage.deleteItem("jwtToken");
+    } else {
+      toast.error("Invalid email or password");
     }
   };
 

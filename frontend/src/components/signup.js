@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 
 const theme = createTheme();
 
@@ -52,7 +52,10 @@ export function Signup() {
     });
     const jsonResponse = await response.json();
     if (jsonResponse && jsonResponse.success) {
+      toast.success("account created sucessfull");
       return navigate("/login");
+    } else {
+      toast.error("Email Address already registered");
     }
   };
 

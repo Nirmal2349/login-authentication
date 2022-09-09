@@ -32,8 +32,8 @@ app.post("/api/signup", async (req, res) => {
     const newUser = await User.create({
       emailAddress: body.emailAddress,
       password: body.password,
-      firstname: body.firstname,
-      lastname: body.lastname,
+      firstName: body.firstName,
+      lastName: body.lastName,
     });
     console.log(newUser);
     res.status(200).json({ success: true, msg: "account created sucessfull" });
@@ -48,6 +48,8 @@ app.post("/api/signup", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const body = req.body;
   const checkUser = await User.findOne({ emailAddress: body.emailAddress });
+  console.log(checkUser);
+  console.log(req.body);
   if (checkUser) {
     if (checkUser.password == body.password) {
       const token = jwt.sign(
